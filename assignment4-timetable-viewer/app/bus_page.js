@@ -1,5 +1,4 @@
 function refreshTable() {
-    document.getElementById("BusTimes").innerHTML = "";
     getBusData(writeToTable);
 }
 
@@ -25,9 +24,15 @@ function writeToTable(data) {
 
     for(var i = 0; i < results.length; i++) {
         var temp = "<tr>";
+        temp += "<td>" + (i+1) + "</td>"; //lolololol
         for(header in headers) {
             var x = "<td>"
-            x += results[i].getElementsByTagName(header)[0].childNodes[0].nodeValue;
+            try{
+                x += results[i].getElementsByTagName(header)[0].childNodes[0].nodeValue;
+            }
+            catch(err){
+
+            }
             x += "</td>";
             temp += x;
         }
@@ -36,10 +41,12 @@ function writeToTable(data) {
     }
 
     document.getElementById("BusTimes").innerHTML = dom;
+    document.getElementById("LastTime").innerHTML = "Data retrieved at " + data.getElementsByTagName("timestamp")[0].innerHTML;
+
 }
 
 function generateColumns(headers) {
-    var dom = "<tr>";
+    var dom = "<tr><th>#</th>";
     for(key in headers) {
         dom += "<th>" + headers[key] + "</th>";
     }
