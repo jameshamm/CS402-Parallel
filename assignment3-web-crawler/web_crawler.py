@@ -52,7 +52,7 @@ def get_url(url, fname=None):
             os.makedirs(fname)
     except InvalidFilename:
         print("the filename could not be used, use another")
-    
+
     save_page_to_file(response, fname)
 
     links = set()

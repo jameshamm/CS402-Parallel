@@ -4,7 +4,9 @@ function refreshTable() {
 
 function getBusData(func) {
     var request = new XMLHttpRequest();
-    var link = "https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=135001&format=xml";
+    var stop = 103381;
+    var link = "https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=" + stop + "&format=xml";
+    console.log(link);
     request.open("GET", link, false);
     request.send();
     // callback
@@ -12,6 +14,7 @@ function getBusData(func) {
 }
 
 function writeToTable(data) {
+    console.log(data.getElementsByTagName("results"));
     var results = data.getElementsByTagName("results")[0].childNodes;
     var headers = {
         "duetime": "Due Time",  // In minutes
