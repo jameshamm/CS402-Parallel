@@ -1,11 +1,8 @@
-import socket
-import struct
 import Tkinter as tk
 import socket
 import struct
 import threading
 import sys
-import select
 import time
 import argparse
 
@@ -173,7 +170,7 @@ if __name__ == "__main__":
     texin.focus_set()
 
     #send message button
-    send = tk.Button(top, text='Send Message'.format(1), command=sendMessage)
+    send = tk.Button(top, text='Send Message'.format(1), command=sendMessageAsUser)
     send.grid(row=1,column=0)
 
     #left hand panel
